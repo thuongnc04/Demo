@@ -1,4 +1,5 @@
 package com.example.demo;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -49,6 +50,11 @@ public class RegisterActivity extends AppCompatActivity {
     private void register() {
         String email = edtEmail.getText().toString();
         String password = edtPassword.getText().toString();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(RegisterActivity.this, "Vui lòng nhập email và password.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

@@ -2,53 +2,49 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center_horizontal"
-    tools:context=".RegisterActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textSize="28dp"
-        android:textStyle="bold"/>
-
+    tools:context=".LoginOTPActivity">
 
     <EditText
-        android:id="@+id/edtEmail"
-        android:layout_marginTop="16dp"
+        android:id="@+id/edtPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email" />
-
-
-
-    <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edtUsername"
         android:layout_marginTop="16dp"
-        android:hint="Password"
-        android:inputType="textPassword" />
+        android:hint="Phone number" />
 
     <Button
-        android:id="@+id/buttonRegister"
+        android:id="@+id/btnGetOTP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edtPassword"
         android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"
-        android:text="Register" />
+        android:text="Get OTP" />
+
+    <EditText
+        android:id="@+id/edtOTP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="OTP" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Login" />
 
     <TextView
-        android:id="@+id/tvSignIn"
+        android:id="@+id/tvLoginEmailPw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="You have an account? Click Sign in"/>
+        android:text="Login with Email and Password"/>
+
 
 </LinearLayout>

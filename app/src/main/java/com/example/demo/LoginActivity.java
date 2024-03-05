@@ -53,11 +53,26 @@ public class LoginActivity extends AppCompatActivity {
                 forgotPassword();
             }
         });
+
+        // Trong onCreate của LoginActivity.java
+        TextView tvLoginWithPhone = findViewById(R.id.tvLoginWithPhone);
+        tvLoginWithPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, LoginOTPActivity.class));
+            }
+        });
+
     }
 
     private void signIn() {
         String email = edtEmail.getText().toString();
         String password = edtPassword.getText().toString();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(LoginActivity.this, "Vui lòng nhập email và password.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -78,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
         String email = edtEmail.getText().toString();
 
         if (email.isEmpty()) {
-            Toast.makeText(this, "Please enter your email.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập email của bạn.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -87,9 +102,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "Password reset email sent.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Đã gửi email đặt lại mật khẩu.", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Failed to send password reset email.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Không gửi được email đặt lại mật khẩu.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
