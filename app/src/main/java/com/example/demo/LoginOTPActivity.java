@@ -72,13 +72,13 @@ public class LoginOTPActivity extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
-                Toast.makeText(LoginOTPActivity.this, "Verification failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginOTPActivity.this, "Xác minh thất bại: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken token) {
                 mVerificationId = verificationId;
-                Toast.makeText(LoginOTPActivity.this, "OTP has been sent", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginOTPActivity.this, "OTP đã được gửi", Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -95,7 +95,7 @@ public class LoginOTPActivity extends AppCompatActivity {
 
     private void getOTP(String phoneNumber) {
         if (phoneNumber.isEmpty()) {
-            Toast.makeText(this, "Please enter phone number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập số điện thoại", Toast.LENGTH_SHORT).show();
             return;
         }
         PhoneAuthOptions options =
@@ -110,7 +110,7 @@ public class LoginOTPActivity extends AppCompatActivity {
 
     private void verifyOTP(String otp) {
         if (otp.isEmpty()) {
-            Toast.makeText(this, "Please enter OTP", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập OTP", Toast.LENGTH_SHORT).show();
             return;
         }
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, otp);
@@ -124,13 +124,13 @@ public class LoginOTPActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()) {
                             // Successful login
-                            Toast.makeText(LoginOTPActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginOTPActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             // Chuyển sang MainActivity
                             startActivity(new Intent(LoginOTPActivity.this, MainActivity.class));
                             finish(); // Đóng Activity hiện tại để ngăn người dùng quay lại màn hình OTP
                         } else {
                             // Failed login
-                            Toast.makeText(LoginOTPActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginOTPActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
